@@ -1,0 +1,21 @@
+<h3>Detalles del Envío</h3>
+<div *ngIf="envios">
+    <div>
+        <label><b>ID:</b> {{envios.id}}</label>
+    </div>
+    <div>
+        <label><b>Orden ID:</b> {{envios.orden_id}}</label>
+    </div>
+    <div>
+        <label><b>Fecha de Envío:</b> {{envios.fecha_envio | date:'dd/MM/yyyy'}}</label>
+    </div>
+    <div>
+        <label><b>Transportista:</b> {{envios.transportista}}</label>
+    </div>
+    <div>
+        <label><b>Número de Rastreo:</b> {{envios.numero_rastreo}}</label>
+    </div>
+</div>
+<div *ngIf="!envios">
+    <p>No hay datos disponibles.</p>
+</div>

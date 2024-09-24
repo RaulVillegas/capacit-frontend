@@ -1,0 +1,39 @@
+
+
+<h3>Lista envios</h3>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Envio id</th>
+            <th>Orden id</th>
+            <th>Fecha de envío</th>
+            <th>Transportista</th>
+            <th>Número de rastreo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let envioItem of paginatedEnvios">
+            <td>{{envioItem.id}}</td>
+            <td>{{envioItem.orden_id}}</td>
+            <td>{{envioItem.fecha_envio | date:'dd/MM/yyyy'}}</td>
+            <td>{{envioItem.transportista}}</td>
+            <td>{{envioItem.numero_rastreo}}</td>
+            <td>
+                <button (click)="actualizarEnvio(envioItem.id)" class="btn btn-info">Actualizar</button>
+                <button (click)="eliminarEnvio(envioItem.id)" class="btn btn-info" style="margin-left: 10px">Eliminar</button>
+                <button (click)="verDetallesEnvio(envioItem.id)" class="btn btn-primary" style="margin-left: 10px">Detalles</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="pagination">
+    <button
+        *ngFor="let i of [].constructor(totalPages); let index = index"
+        (click)="cambiarPagina(index + 1)"
+        [class.active]="currentPage === index + 1">
+        {{ index + 1 }}
+    </button>
+</div>
+

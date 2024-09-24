@@ -14,6 +14,9 @@ import { ActualizarClienteComponent } from './components/cliente/actualizar-clie
 import { ListarPedidosComponent } from './components/pedido/listar-pedidos/listar-pedidos.component';
 import { ListarCustomersComponent } from './components/customers/listar-customers/listar-customers.component';
 import { ProductoComponent } from './components/producto/producto/producto.component';
+import { ActualizarEnvioComponent } from './components/envio/actualizar-envio/actualizar-envio.component';
+import { DetalleEnvioComponent } from './components/envio/detalle-envio/detalle-envio.component';
+import { ListaEnviosComponent } from './components/envio/lista-envios/lista-envios.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { ProductoComponent } from './components/producto/producto/producto.compo
     ActualizarClienteComponent,
     ListarPedidosComponent,
     ListarCustomersComponent,
-    ProductoComponent
+    ProductoComponent,
+    ActualizarEnvioComponent,
+    DetalleEnvioComponent,
+    ListaEnviosComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,130 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Editar envío</h3>
+    <form (ngSubmit)="onSubmit()" #envioForm="ngForm">
+        <div class="form-group">
+            <label>Id:</label>
+            <input type="number" class="form-control" id="id" [(ngModel)]="envio.id" name="id" required min="1" max="9999999999" placeholder="Digite su id" #id="ngModel">
+            <div class="alert alert-danger" *ngIf="id.invalid && (id.dirty || id.touched)">
+                <div *ngIf="id.errors.required">
+                    Digite su id por favor
+                </div>
+                <div *ngIf="id.errors.min || id.errors.max">
+                    El id debe tener minimo un 1 dígito
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Orden id:</label>
+            <input type="number" class="form-control" id="orden_id" [(ngModel)]="envio.orden_id" name="orden_id" required min="10" max="999999999" placeholder="Digite su orden id" #orden_id="ngModel">
+            <div class="alert alert-danger" *ngIf="orden_id.invalid && (orden_id.dirty || orden_id.touched)">
+                <div *ngIf="orden_id.errors.required">
+                    Digite su orden id por favor
+                </div>
+                <div *ngIf="orden_id.errors.min || orden_id.errors.max">
+                    El orden id debe tener un minimo de 2 dígitos
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Fecha envío:</label>
+            <input type="date" class="form-control" id="fecha_envio" [(ngModel)]="envio.fecha_envio" name="fecha_envio" required placeholder="Fecha" #fecha_envio="ngModel">
+            <div class="alert alert-danger" *ngIf="fecha_envio.invalid && (fecha_envio.dirty || fecha_envio.touched)">
+                <div *ngIf="fecha_envio.errors.required">
+                    Seleccione la fecha de envío
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Transportista:</label>
+            <select class="form-control" id="transportista" [(ngModel)]="envio.transportista" name="transportista" required #transportista="ngModel">
+                <option value="" disabled>Escoja el transportista</option>
+                <option value="amazon">Amazon</option>
+                <option value="mercado_libre">Mercado Libre</option>
+                <option value="dhl">DHL</option>
+                <option value="fedex">FedEx</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="transportista.invalid && (transportista.dirty || transportista.touched)">
+                <div *ngIf="transportista.errors.required">
+                    Escoja su transportista por favor
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Numero de rastreo:</label>
+            <input type="number" class="form-control" id="numero_rastreo" [(ngModel)]="envio.numero_rastreo" name="numero_rastreo" required placeholder="Digite su numero de rastreo" #numero_rastreo="ngModel">
+            <div class="alert alert-danger" *ngIf="numero_rastreo.invalid && (numero_rastreo.dirty || numero_rastreo.touched)">
+                <div *ngIf="numero_rastreo.errors.required">
+                    Digite su numero de rastreo por favor
+                </div>
+                <div *ngIf="numero_rastreo.value && (numero_rastreo.value.toString().length !== 9)">
+                    El numero de rastreo debe contener exactamente 9 dígitos
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-success" [disabled]="!envioForm.form.valid">Guardar</button>
+    </form>
+</div>
+
+
+<!--<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Editar envío</h3>
+    <form (ngSubmit)="onSubmit()" #envioForm="ngForm">
+        <div class="form-group">
+            <label>Id:</label>
+            <input type="number" class="form-control" id="id" [(ngModel)]="envio.id" name="id" required minlength="4" maxlength="10" placeholder="Digite su id" #id="ngModel">
+            <div class="alert alert-danger" *ngIf="id.invalid && (id.dirty || id.touched)">
+                <div *ngIf="id.errors.required">
+                    Digite su id por favor
+                </div>
+                <div *ngIf="id.errors.minlength">
+                    El id debe contener mínimo 4 dígitos
+                </div>
+                <div *ngIf="id.errors.maxlength">
+                    El id debe contener máximo 10 dígitos
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Orden id:</label>
+            <input type="number" class="form-control" id="orden_id" [(ngModel)]="envio.orden_id" name="orden_id" required minlength="4" maxlength="9" placeholder="Digite su orden id" #orden_id="ngModel">
+            <div class="alert alert-danger" *ngIf="orden_id.invalid && (orden_id.dirty || orden_id.touched)">
+                <div *ngIf="orden_id.errors.required">
+                    Digite su orden id por favor
+                </div>
+                <div *ngIf="orden_id.errors.minlength">
+                    El orden id debe contener mínimo 4 dígitos
+                </div>
+                <div *ngIf="orden_id.errors.maxlength">
+                    El orden id debe contener máximo 9 dígitos
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Fecha envío:</label>
+            <input type="date" class="form-control" id="fecha_envio" [(ngModel)]="envio.fecha_envio" name="fecha_envio" required placeholder="Escribe la nueva fecha de envío" #fecha_envio="ngModel">
+            <div class="alert alert-danger" *ngIf="fecha_envio.invalid && (fecha_envio.dirty || fecha_envio.touched)">
+                <div *ngIf="fecha_envio.errors.required">
+                    Escriba la nueva fecha de envío por favor
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Transportista:</label>
+            <input type="text" class="form-control" id="transportista" [(ngModel)]="envio.transportista" name="transportista" required minlength="4" maxlength="13" placeholder="Digite su transportista" #transportista="ngModel">
+            <div class="alert alert-danger" *ngIf="transportista.invalid && (transportista.dirty || transportista.touched)">
+                <div *ngIf="transportista.errors.required">
+                    Escriba su transportista por favor
+                </div>
+                <div *ngIf="transportista.errors.minlength">
+                    El transportista debe contener mínimo 4 caracteres
+                </div>
+                <div *ngIf="transportista.errors.maxlength">
+                    El transportista debe contener máximo 13 caracteres
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-success" [disabled]="!envioForm.form.valid">Guardar</button>
+    </form>
+</div>-->
